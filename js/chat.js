@@ -111,6 +111,7 @@ function PopulateFriendList() {
 function signIn() {
   var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider);
+  StartChat(1);
 }
 
 function signOut() {
