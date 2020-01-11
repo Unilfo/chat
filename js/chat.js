@@ -189,10 +189,8 @@ function onStateChanged(user) {
         document.getElementById("lnkSignOut").style = "";
       }
       document.getElementById("lnkNewChat").classList.remove("disabled");
+          LoadChatList();
     });
-
-    LoadChatList();
-
   } else {
     document.getElementById("imgProfile").src = "/img/ddd.png";
     document.getElementById("imgProfile").title = "";
