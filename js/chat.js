@@ -50,11 +50,7 @@ function SendMessage() {
     dataTime: new Date().toLocaleString()
   };
 
-  firebase
-    .database()
-    .ref("chatMessages")
-    .child(chatKey)
-    .push(chatMessage, function(error) {
+  firebase.database().ref("chatMessages").child(chatKey).push(chatMessage, function(error) {
       if (error) {
         alert(error);
       } else {
@@ -80,12 +76,11 @@ function PopulateFriendList() {
   document.getElementById("lstFriend").innerHTML = `<div class='text-center'>
                                                         <span class='spinner-border text-primary mt-5' style='width:7rem;height:7rem;'></span>
                                                     </div>`;
-
   let db = firebase.database().ref("users");
   let lst = "";
   db.on("value", function(users) {
     if (users.hasChildren()) {
-      lst = `<li class="list-group-item" style="background-color: #f8f8f8;">
+      lst =`<li class="list-group-item" style="background-color: #f8f8f8;">
                             <input type="text" placeholder="Search or new chat" class="form-control form-rounded">
                         </li>`;
     }
@@ -95,7 +90,7 @@ function PopulateFriendList() {
         lst += `<li class="list-group-item list-group-item-action" data-dismiss='modal' onclick="StartChat('${data.key}', '${user.name}', '${user.photoURL}')">
                   <div class="row">
                       <div class="clo-md-2">
-                          <img src="${user.photoURL}" alt="/" class="rounded-circle friend-logo">
+                          <img src="${user.photoURL}" class="rounded-circle friend-logo">
                       </div>
                       <div class="col-md-10" style="cursor:pointer;">
                           <div class="name">${user.name}</div>
@@ -111,7 +106,6 @@ function PopulateFriendList() {
 function signIn() {
   var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider);
-  StartChat(1);
 }
 
 function signOut() {
