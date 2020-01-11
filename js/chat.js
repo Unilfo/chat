@@ -72,6 +72,39 @@ function SendMessage() {
     });
 }
 
+function LoadChatList(){
+  let db = firebase.database().ref('friend_list');
+  db.on('value', function(lists){
+    document.getElementById('lstChat').innerHTML = `<li class="list-group-item" style="background-color: #f8f8f8;">
+                                                        <input type="text" placeholder="Search or new chat" class="form-control form-rounded">
+                                                    </li>`;
+    lists.forEach(function(data){
+      let lst = data.val();
+      let friendKey = '';
+      if(lst.friendKey === currentUserKey){
+        friendKey = lst.userId;
+      }
+      else if(lst.userId === currentUserKey){
+        friendKey = lst.friendId;
+      }
+      firebase.database().ref('users').child(friendKey).on('value', function(data){
+        let user = data.val();
+        document.getElementById('lstChat').innerHTML += `<li class="list-group-item list-group-item-action" onclick="StartChat('${data.key}', '${user.name}', '${user.photoURL}')">
+                                                            <div class="row">
+                                                                <div class="clo-md-2">
+                                                                    <img src="${user.photoURL}" class="friend-logo rounded-circle">
+                                                                </div>
+                                                                <div class="col-md-10 d-none d-md-block" style="cursor:pointer;">
+                                                                    <div class="${user.name}">Any name</div>
+                                                                    <div class="under-name">This is some message text...</div>
+                                                                </div>
+                                                            </div>
+                                                        </li>`;
+      });
+    });
+  });
+}
+
 function PopulateFriendList() {
   document.getElementById("lstFriend").innerHTML = `<div class='text-center'>
                                                         <span class='spinner-border text-primary mt-5' style='width:7rem;height:7rem;'></span>
@@ -157,6 +190,9 @@ function onStateChanged(user) {
       }
       document.getElementById("lnkNewChat").classList.remove("disabled");
     });
+
+    LoadChatList();
+
   } else {
     document.getElementById("imgProfile").src = "/img/ddd.png";
     document.getElementById("imgProfile").title = "";
