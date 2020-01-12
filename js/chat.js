@@ -91,10 +91,10 @@ function LoadChatMessages(chatKey, friendPhoto) {
       }
     });
     document.getElementById("messages").innerHTML = messageDisplay;
-    document
-      .getElementById("messages")
-      .scrollTo(0, document.getElementById("messages").clientHeight);
+    document.getElementById("messages").scrollTo(0, document.getElementById("messages").clientHeight);
   });
+  document.getElementById('textMessage').focus();
+  document.getElementById('messages').focus();
 }
 
 function hideChatList() {
@@ -143,7 +143,6 @@ function SendMessage() {
           document.getElementById('textMessage').value = '';
           document.getElementById('textMessage').focus();
       }
-      document.getElementById('textMessage').focus();
   });
 }
 
@@ -177,7 +176,7 @@ function LoadChatList() {
                                                                 <div class="clo-md-2">
                                                                     <img src="${user.photoURL}" class="friend-logo rounded-circle">
                                                                 </div>
-                                                                <div class="col-md-10 d-none d-md-block" style="cursor:pointer;">
+                                                                <div class="col-md-10 col-10 d-md-block" style="cursor:pointer;">
                                                                     <div class="name">${user.name}</div>
                                                                     <div class="under-name">This is some message text...</div>
                                                                 </div>
@@ -237,7 +236,6 @@ function onFirebaseStateChanged() {
 function onStateChanged(user) {
   if (user) {
     // alert(firebase.auth().currentUser.email + '\n' + firebase.auth().currentUser.displayName);
-
     var userProfile = {
       email: "",
       name: "",
