@@ -92,9 +92,8 @@ function LoadChatMessages(chatKey, friendPhoto) {
     });
     document.getElementById("messages").innerHTML = messageDisplay;
     document.getElementById("messages").scrollTo(0, document.getElementById("messages").clientHeight);
+    document.getElementById('messages').scrollBy(0,9999);
   });
-  document.getElementById('textMessage').focus();
-  document.getElementById('messages').focus();
 }
 
 function hideChatList() {
@@ -142,6 +141,7 @@ function SendMessage() {
           });
           document.getElementById('textMessage').value = '';
           document.getElementById('textMessage').focus();
+          document.getElementById('messages').scrollBy(0,9999);
       }
   });
 }
