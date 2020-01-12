@@ -176,7 +176,7 @@ function LoadChatList() {
                                                                 <div class="clo-md-2">
                                                                     <img src="${user.photoURL}" class="friend-logo rounded-circle">
                                                                 </div>
-                                                                <div class="col-md-10 col-10 d-md-block" style="cursor:pointer;">
+                                                                <div class="col-md-10 col-8 d-md-block" style="cursor:pointer;">
                                                                     <div class="name">${user.name}</div>
                                                                     <div class="under-name">This is some message text...</div>
                                                                 </div>
