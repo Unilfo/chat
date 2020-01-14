@@ -25,7 +25,10 @@ body {
     margin-top: 20px;
     padding: 0;
 }
-
+.imgProfile{
+    height: 40px;
+    width: 40px;
+}
 .profile-pic {
     height: 40px;
     width: 40px;
