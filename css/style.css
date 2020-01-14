@@ -79,13 +79,18 @@ body{
 .dropdown-toggle::before{
     display: none !important;
 }
+
 @media screen and (max-width: 600px) {
     body, html{
-        width: 320px;
-        height: 568px;
-        padding: 0;
+        width: 375px;
+        height: 667px;
+        padding: 0px;
         margin: 0;
         overflow: hidden;
+    }
+    .card{
+        padding: 0;
+        height: 100vh;
     }
     .chatbox{
         width: 100%;
@@ -93,5 +98,7 @@ body{
         margin-top: 0px;
         padding: 0;
     }
-
+    .list-group{
+        padding-left: 13px;
+    }
 }
