@@ -232,7 +232,7 @@ function SendMessage() {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': 'key=AIzaSyBXkd3HN8IO3Xa4AFTvqFpo5LXZQ9-Rj7s'
+                        'Authorization': 'key=AIzaSyCINFHFgkHOk1VdWTGk_-nTgTByCpWdcV4'
                     },
                     data: JSON.stringify({
                         'to': data.val().token_id, 'data': { 'message': chatMessage.msg.substring(0, 30) + '...', 'icon': firebase.auth().currentUser.photoURL }
@@ -313,10 +313,10 @@ function LoadChatList() {
                     var user = data.val();
                     document.getElementById('lstChat').innerHTML += `<li class="list-group-item list-group-item-action" onclick="StartChat('${data.key}', '${user.name}', '${user.photoURL}')">
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-2 col-2">
                                     <img src="${user.photoURL}" class="friend-pic rounded-circle" />
                                 </div>
-                                <div class="col-md-10" style="cursor:pointer;">
+                                <div class="col-md-10 col-10" style="cursor:pointer;">
                                     <div class="name">${user.name}</div>
                                     <div class="under-name">This is some message text...</div>
                                 </div>
